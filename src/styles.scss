@@ -1,0 +1,15 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+body{
+  position: relative;
+  min-height: 100%;
+  height: 100vh;
+  background-image: linear-gradient(0deg, #66b6f894 0%, #ffffffc5 35%), url("https://i0.wp.com/torischerle.files.wordpress.com/2020/09/img_0701.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+

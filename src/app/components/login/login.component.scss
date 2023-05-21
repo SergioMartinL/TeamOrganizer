@@ -1,0 +1,279 @@
+:host{
+  height: 100%;
+  background-image: linear-gradient(0deg, #0053ceb2 0%, #0052ce52 100%), url("https://i0.wp.com/torischerle.files.wordpress.com/2020/09/img_0701.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+//PC
+.container {
+  display: grid;
+  grid-template-columns: 2.1fr;
+  grid-template-rows: 70px 1fr 40px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "login-zone"
+    ".";
+}
+
+.login-zone {  display: grid;
+  grid-template-columns: 1fr 1.1fr 0.9fr;
+  grid-template-rows: 0.5fr 2.1fr 0.4fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    ". loginForm ."
+    ". . .";
+  grid-area: login-zone;
+}
+
+.loginForm { grid-area: loginForm; }
+
+
+
+@media screen and (max-width: 1200px) {
+  .container {  display: grid;
+    grid-template-columns: 2.1fr;
+    grid-template-rows: 70px 1fr 40px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      "login-zone"
+      ".";
+  }
+
+  .login-zone {  display: grid;
+    grid-template-columns: 0.8fr 1.3fr 0.8fr;
+    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      ". loginForm ."
+      ". . .";
+    grid-area: login-zone;
+  }
+
+  .loginForm { grid-area: loginForm; }
+}
+
+@media screen and (max-width: 991px) {
+  .container {  display: grid;
+    grid-template-columns: 2.1fr;
+    grid-template-rows: 70px 1fr 40px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      "login-zone"
+      ".";
+  }
+
+  .login-zone {  display: grid;
+    grid-template-columns: 0.6fr 1.7fr 0.6fr;
+    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      ". loginForm ."
+      ". . .";
+    grid-area: login-zone;
+  }
+
+  .loginForm { grid-area: loginForm; }
+}
+
+@media screen  and (max-width: 767px) {
+  .container {  display: grid;
+    grid-template-columns: 2.1fr;
+    grid-template-rows: 70px 1fr 40px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      "login-zone"
+      ".";
+  }
+
+  .login-zone {  display: grid;
+    grid-template-columns: 0.3fr 2.3fr 0.3fr;
+    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      ". loginForm ."
+      ". . .";
+    grid-area: login-zone;
+  }
+
+  .loginForm { grid-area: loginForm; }
+}
+
+@media allc  and (max-width: 575px) {
+  .container {  display: grid;
+    grid-template-columns: 2.1fr;
+    grid-template-rows: 70px 1fr 40px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "."
+      "login-zone"
+      ".";
+  }
+
+  .login-zone {  display: grid;
+    grid-template-columns: 0.4fr 2.8fr 0.4fr;
+    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      ". loginForm ."
+      ". . .";
+    grid-area: login-zone;
+  }
+
+  .loginForm { grid-area: loginForm; }
+}
+
+
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-image: linear-gradient(0deg, #91ceff 0%, #f4feff 100%);
+  border-radius: 20px;
+}
+
+
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: #0088ff;
+  font-size: 1.2em;
+}
+
+.field-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: rgb(26, 26, 26);
+  background-color: #a8cee97a;
+  box-shadow: inset 2px 5px 10px rgb(143, 143, 143);
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: #2e74b2;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #2e74b2;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
+}
+
+.button1 {
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: .2s ease-in-out;
+  background-image: linear-gradient(0deg, #008cff 0%, #63b9ff 100%);
+  color: rgb(0, 0, 0);
+}
+
+.button1:hover {
+  background-image: linear-gradient(0deg, #2575b6 0%, #2e74b2 100%);
+  color: rgb(235, 252, 255);
+}
+
+.button1:disabled {
+  background-image: linear-gradient(0deg, #6b92b3 0%, #7094b3 100%);
+  color: rgb(235, 252, 255);
+}
+
+
+
+.button2 {
+  padding: 0.5em;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .2s ease-in-out;
+  background-image: linear-gradient(0deg, #008cff 0%, #63b9ff 100%);
+  color: rgb(0, 0, 0);
+}
+
+.button2:hover {
+  background-image: linear-gradient(0deg, #2575b6 0%, #2e74b2 100%);
+  color: rgb(235, 252, 255);
+}
+
+.button3 {
+  margin-bottom: 3em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .2s ease-in-out;
+  background-image: linear-gradient(0deg, #008cff 0%, #63b9ff 100%);
+  color: rgb(0, 0, 0);
+}
+
+.button3:hover {
+  background-image: linear-gradient(163deg, #a00000fa 0%, #d10050 100%);
+  color: rgb(255, 255, 255);
+}
+
+.card-login {
+  background-image: linear-gradient(163deg, #ffffff 0%, #85c2ff 100%);
+  border-radius: 22px;
+  transition: all .3s;
+}
+
+.card2 {
+  border-radius: 0;
+  transition: all .2s;
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.card-login:hover {
+  box-shadow: 0px 0px 30px 1px rgba(255, 255, 255, 0.3);
+}

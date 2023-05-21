@@ -1,0 +1,234 @@
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 0.2fr;
+  grid-template-rows: 0.2fr 2fr 0.2fr;
+  gap: 0px 0px;
+  margin: 2.5rem;
+  grid-template-areas:
+    ". . ."
+    "profile-menu Userform ."
+    ". . .";
+  grid-area: contenedor;
+  background-color: aliceblue;
+  height: 75%;
+  border-radius: 0.8rem;
+  border: 2px solid lightgray;
+  box-shadow: 0 0.5em 0.5em -0.4em #475e8e;
+}
+
+.Userform {
+  grid-area: Userform;
+  background-color: aliceblue;
+  border-left: 2px solid rgb(110, 110, 110);
+}
+
+.profile-menu {
+  grid-area: profile-menu;
+}
+
+
+.label {
+  --border: rgba(66, 66, 66, 0.733);
+  --bgLabel: rgba(120, 120, 120, 1);
+  --bgInput: rgba(255, 255, 255, 1);
+  --color-light: rgb(98, 0, 255);
+  --color-light-a: rgb(133, 123, 150);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content min-content;
+  position: relative;
+  font-size: 1rem;
+  transition: all .1s ease-out;
+}
+
+.label>.label-title {
+  border: 1px solid var(--color-light);
+  color: var(--color-light);
+  box-shadow: 0 2px 2px rgba(120, 120, 120, .25);
+  padding: .25em .5em;
+  background-color: var(--bgInput);
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+  position: relative;
+  border-radius: 4px;
+  translate: 10px -10px;
+  transition: all .2s ease-out .2s;
+  z-index: 10;
+}
+
+.label:focus .input,
+.label:focus-within .input {
+  background-color: var(--bgInput);
+  padding: 1em;
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
+  outline: 2px solid var(--color-light);
+  outline-offset: -2px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(98, 0, 255, .25), 0 -5px 20px rgba(98, 0, 255, .1);
+  scale: 1.15;
+  transition: all .2s cubic-bezier(0, 1.46, 1, 1.62) .1s;
+}
+
+.label:focus,
+.label:focus-within .label-title {
+  translate: 10px -20px;
+  border-radius: 4px 4px 0 0;
+  z-index: 0;
+  transition: all .2s cubic-bezier(0, 1.46, 1, 1.62);
+}
+
+.input {
+  width: 500px;
+  border-radius: 0.6rem;
+  appearance: none;
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid var(--color-light);
+  border-left: 2px solid transparent;
+  background-color: var(--bgInput);
+  caret-color: var(--color-light);
+  padding: 1.25em 1em .25em;
+  outline: 0px solid var(--color-light);
+  grid-column: 1/-1;
+  grid-row: 1 / -1;
+  position: relative;
+  transition: all .2s cubic-bezier(.5, .6, .5, .62);
+  z-index: 0;
+}
+
+.input,
+.input::placeholder {
+  color: var(--color-light-a);
+}
+
+
+.modalButton {
+  width: 100%;
+}
+
+.fill:hover {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+.pulse:hover {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+.close:hover {
+  box-shadow: inset -3.5em 0 0 0 var(--hover), inset 3.5em 0 0 0 var(--hover);
+}
+
+.user-picture {
+  overflow: hidden;
+  object-fit: cover;
+  width: 10rem;
+  height: 10rem;
+  border: 4px solid #3c76cd;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: #abd5ffe7;
+}
+
+.user-picture svg {
+  width: 5rem;
+  fill: currentColor;
+}
+
+.profilebtn {
+  width: 250px;
+}
+
+.raise {
+  background-color: #43a1ff;
+  border: 2px solid #8bc5ff;
+  transition: 0.25s;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+.raise:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #475e8e;
+  transform: translateY(-0.25em);
+  background-color: #1960bc;
+  color: white;
+}
+
+.raiseCancel {
+  background-color: #ff4343;
+  border: 2px solid #ff8b8b;
+  transition: 0.25s;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+.raiseCancel:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #8e4747;
+  transform: translateY(-0.25em);
+  background-color: #bc1919;
+  color: white;
+}
+
+.raiseCancelTable {
+  background-color: #ff4343;
+  border: 2px solid #ff8b8b;
+  transition: 0.25s;
+  font: inherit;
+  line-height: 1;
+  padding: 0.5em 1em;
+}
+
+.raiseCancelTable:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #8e4747;
+  transform: translateY(-0.25em);
+  background-color: #bc1919;
+  color: white;
+}
+
+.raiseEditTable {
+  background-color: #43ff50;
+  border: 2px solid #8bff91;
+  transition: 0.25s;
+  font: inherit;
+  line-height: 1;
+  padding: 1em 2em;
+}
+
+.raiseEditTable:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #478e49;
+  transform: translateY(-0.25em);
+  background-color: #19bc47;
+  color: white;
+}
+
+
+.up:hover {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+.slide:hover {
+  box-shadow: inset 6.5em 0 0 0 var(--hover);
+}
+
+
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+
+  &:hover {
+    box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+  }
+}

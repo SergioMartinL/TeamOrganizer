@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="container">
+    <div *ngIf="usuario != null;then logged else guest"></div>
+    <ng-template #logged>
+      <div class="container">
+        <div class="row m-3 gap-3 justify-content-center">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3" id="publicaciones">
+            <a routerLink="/publicaciones" class="d-flex">
+              <div class="card flex-fill">
+                <img src="assets/img/foro-card-dibujo.jpg" class="card-img-top pt-4 pb-4" alt="..." />
+                <div class="card-body">
+                  <h3 class="card-title">Comunidad</h3>
+                  <p class="card-text">
+                    Mira las publicaciones de otra gente o pon la tuya propia.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <a routerLink="/calendario" class="d-flex">
+              <div class="card flex-fill">
+                <img src="assets/img/calendar-card-dibujado.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h3 class="card-title">Calendario</h3>
+                  <p class="card-text">Ten tu propio calendario con objetivos.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #guest>
+      <div class="container">
+        <div class="row m-3 gap-3 justify-content-center">
+
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3" id="publicaciones">
+            <a routerLink="/login" class="d-flex">
+              <div class="card flex-fill">
+                <img src="assets/img/foro-card-dibujo.jpg" class="card-img-top pt-4 pb-4" alt="..." />
+                <div class="card-body">
+                  <h3 class="card-title">Comunidad</h3>
+                  <p class="card-text">Mira las publicaciones de otra gente o pon la tuya propia.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <a routerLink="/login" class="d-flex">
+              <div class="card flex-fill">
+                <img src="assets/img/calendar-card-dibujado.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h3 class="card-title">Calendario</h3>
+                  <p class="card-text">Ten tu propio calendario con objetivos.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+  </div>
+</div>

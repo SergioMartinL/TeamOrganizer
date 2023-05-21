@@ -1,0 +1,35 @@
+.navColor{
+  background-color: #86bfca !important;
+}
+nav{
+  border-bottom: solid 3px #8bbefc;
+  ul{
+    li{
+      a {
+        position: relative;
+      }
+
+      a::after{
+        position: absolute;
+        content: '';
+        height: 2px;
+        background-color: #8bbefc;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.2s ease-out;
+      }
+
+      a:hover{
+        color: #8bbefc;
+      }
+
+      a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+
+
+.container{
+  max-width: 100%;
+  .carousel{
+    border: 1px solid gray;
+    margin: 15px;
+    border-radius: 0.5em;
+    max-width: 100%;
+
+    .carousel-inner {
+      height: 0;
+      padding-bottom: 25%; /* this sets carousel aspect ratio (4:1 here) */
+      .carousel-item {
+        position: absolute !important; /* Bootstrap is insistent */
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    .carousel-item img {
+      height: 100%; /* Bootstrap handles width already */
+      object-fit: cover; /* or 'contain' if you want stretch instead of crop */
+      border-radius: 0.5em;
+    }
+
+
+  }
+  /*
+  .card{
+    margin: 15px;
+    height: 450px;
+    .card-footer{
+      border-style: none;
+      background: none;
+    }
+*/
+a{
+  text-decoration: none;
+}
+.card {
+  height: 450px;
+  width: fit-content;
+  margin: 0px;
+  border-radius: 20px;
+  background: #ffffff;
+  position: relative;
+  padding: 0.5rem;
+  border: 2px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+ }
+
+ .card-details {
+  color: black;
+  height: 100%;
+  gap: .5em;
+  display: grid;
+  place-content: center;
+ }
+
+ .card-text{
+  font-size: large;
+ }
+
+ .card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #008bf8;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+ }
+
+ .text-body {
+  color: rgb(134, 134, 134);
+ }
+
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+ }
+
+ /*Hover*/
+ .card:hover {
+  border-color: #008bf8;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+
+ .card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }
+
+    img{
+      height: 250px;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
