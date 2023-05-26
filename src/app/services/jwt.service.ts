@@ -28,8 +28,6 @@ export class JwtService {
   checkToken() {
     let token = localStorage.getItem('token');
     if (token !== "" || token !== undefined) {
-      console.log(this.decodeUsuario(token));
-
       return this.decodeUsuario(token);
     }else{
       return null;

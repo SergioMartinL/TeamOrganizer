@@ -1,0 +1,167 @@
+<div class="container">
+  <h1>Listado de Proyectos</h1>
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">Añadir proyecto</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="project-name" class="col-form-label">Nombre:</label>
+              <div></div>
+              <input type="text" class="input-field" id="project-name" [(ngModel)]="nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Descripcion:</label>
+              <div></div>
+              <textarea class="input-field" id="message-text" [(ngModel)]="descripcion" name="descripcion"></textarea>
+            </div>
+
+            <select class="form-select" multiple data-mdb-placeholder="Example placeholder" multiple [(ngModel)]="usuarioEmailSelect" name="select">
+              <option *ngFor="let usuario of usuarios" value={{usuario.email}}>{{usuario.email}}</option>
+            </select>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="agregarProyecto()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proyecto of proyectos">
+        <td>{{ proyecto.nombre }}</td>
+        <td>{{ proyecto.descripcion }}</td>
+        <td>
+          <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#detallesModal"
+            data-bs-whatever="@fat" (click)="verDetalles(proyecto.id)">Detalles</button>
+
+          <div class="modal fade" id="detallesModal" tabindex="-1" aria-labelledby="detallesModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="detallesModalLabel">{{detallesProyecto.nombre}}</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <h5 for="detalles-descripcion" class="col-form-label">Descripcion:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-descripcion">{{detallesProyecto.descripcion}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-fecha" class="col-form-label">Fecha:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-fecha">{{detallesProyecto.fecha}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-usuarios" class="col-form-label">Usuarios:</h5>
+                      <div></div>
+                      <tr *ngFor="let usuario of detallesProyecto.usuarios">
+                        <td>{{usuario}}</td>
+                      </tr>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-warning m-1" data-bs-toggle="modal" data-bs-target="#editarModal"data-bs-whatever="@Zsad" (click)="editarProyecto(proyecto.id)">Editar</button>
+
+          <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editarModalLabel">{{proyecto.nombre}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="editar-name" class="col-form-label">Nombre:</label>
+                      <div></div>
+                      <input type="text" class="input-field" id="project-name" name="nombre" [(ngModel)]="proyectoAEditar.nombre">
+                    </div>
+                    <div class="mb-3">
+                      <label for="editar-descripcion" class="col-form-label">Descripcion:</label>
+                      <div></div>
+                      <textarea class="input-field" id="project-descripcion" name="descripcion" [(ngModel)]="proyectoAEditar.descripcion"></textarea>
+                    </div>
+                    <select class="select" multiple data-mdb-placeholder="Example placeholder" multiple [(ngModel)]="usuarioEmailSelect" name="select">
+                      <option *ngFor="let usuario of usuarios" value={{usuario.email}}>{{usuario.email}}</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  (click)="guardarProyecto(proyecto.id)">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-danger m-1" (click)="deleteProyecto(proyecto.id)">Eliminar</button>
+
+          <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#tareasProyectoModal"data-bs-whatever="@egsgsrgs" (click)="obtenerTareasProyecto(proyecto.id)">Tareas</button>
+
+          <div class="modal fade" id="tareasProyectoModal" tabindex="-1" aria-labelledby="tareasProyectoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="tareasProyectoLabel">Tareas</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <div></div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Nombre:</th>
+                            <th>Importancia:</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let tarea of tareas">
+                            <td>{{tarea.nombre}}</td>
+                            <td>{{tarea.importancia}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

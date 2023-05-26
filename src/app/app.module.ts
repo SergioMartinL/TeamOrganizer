@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,15 +20,19 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
+import { TareasComponent } from './components/tareas/tareas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProyectosComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    TareasComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     ButtonModule,
     BrowserAnimationsModule,
     DropdownModule,
-    SelectButtonModule
+    SelectButtonModule,
+    CommonModule
   ],
   providers: [
         {

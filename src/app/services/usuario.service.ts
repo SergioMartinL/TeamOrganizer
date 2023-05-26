@@ -8,8 +8,8 @@ import { Usuario } from '../classes/usuario.model';
 })
 export class UsuarioService {
 
-  url: String = "http://192.168.1.113:9098/usuarios";
-  url2: String = "http://localhost:9098/usuarios";
+  url2ss: String = "http://192.168.1.113:9098/usuarios";
+  url: String = "http://localhost:9098/usuarios";
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +27,10 @@ export class UsuarioService {
 
   getUsuario(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.url}`);
+  }
+
+  getUsuarioById(id:number):Observable<Usuario>{
+    return this.http.get<Usuario>(this.url + "/" + id);
   }
 
   getUsuarioByEmail(email: string): Observable<Usuario> {

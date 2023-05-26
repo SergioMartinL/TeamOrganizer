@@ -1,0 +1,172 @@
+<div class="container">
+  <h1>Listado de tareas</h1>
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">Añadir tarea</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva Tarea</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="project-name" class="col-form-label">Nombre:</label>
+                <div></div>
+                <input type="text" class="input-field" id="project-name" [(ngModel)]="nombre" name="nombre">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Descripcion:</label>
+                <div></div>
+                <textarea class="input-field" id="message-text" [(ngModel)]="descripcion" name="descripcion"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="importancia-text" class="col-form-label">Importancia:</label>
+                <div></div>
+                <input type="text" class="input-field" id="importancia-text" [(ngModel)]="importancia" name="descripcion">
+              </div>
+              <div class="mb-3">
+              </div>
+              <div class="mb-3">
+                <label for="selectProyecto" class="col-form-label">Proyecto:</label>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="proyectoId" name="selectProyecto">
+                  <option *ngFor="let proyecto of proyectos" value={{proyecto.id}}>{{proyecto.nombre}}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="form-select" class="col-form-label">Usuarios:</label>
+                <select class="form-select" multiple data-mdb-placeholder="Example placeholder" multiple [(ngModel)]="usuarioEmailSelect" name="select">
+                  <option *ngFor="let usuario of usuarios" value={{usuario.email}}>{{usuario.email}}</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="agregarTarea()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Importancia</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarea of tareas">
+        <td>{{ tarea.nombre }}</td>
+        <td *ngIf="tarea.estado == true">Activa</td>
+        <td *ngIf="tarea.estado == false">No activa</td>
+        <td>{{ tarea.importancia }}</td>
+        <td>
+          <button type="button" class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#detallesModal"
+            data-bs-whatever="@fat" (click)="verDetalles(tarea.id)">Detalles</button>
+
+          <div class="modal fade" id="detallesModal" tabindex="-1" aria-labelledby="detallesModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="detallesModalLabel">{{detallesTarea.nombre}}</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <h5 for="detalles-descripcion" class="col-form-label">Descripcion:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-descripcion">{{detallesTarea.descripcion}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-fecha" class="col-form-label">Fecha:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-fecha">{{detallesTarea.fecha}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-fechFin" class="col-form-label">Fecha fin:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-fechaFin">{{detallesTarea.fechaFin}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-proyecto" class="col-form-label">Proyecto:</h5>
+                      <div></div>
+                      <label type="text" class="col-form-label" id="detalles-proyecto">{{detallesTarea.proyecto.nombre}}</label>
+                    </div>
+                    <div class="mb-3">
+                      <h5 for="detalles-usuarios" class="col-form-label">Usuarios:</h5>
+                      <div></div>
+                      <tr *ngFor="let usuario of detallesTarea.usuarios">
+                        <td>{{usuario}}</td>
+                      </tr>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-warning m-1" data-bs-toggle="modal" data-bs-target="#editarModal"data-bs-whatever="@Zsad" (click)="editarTarea(tarea.id)">Editar</button>
+
+          <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editarModalLabel">{{tarea.nombre}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="editar-name" class="col-form-label">Nombre:</label>
+                      <div></div>
+                      <input type="text" class="input-field" id="project-name" name="nombre" [(ngModel)]="tareaAEditar.nombre">
+                    </div>
+                    <div class="mb-3">
+                      <label for="editar-descripcion" class="col-form-label">Descripcion:</label>
+                      <div></div>
+                      <textarea class="input-field" id="project-descripcion" name="descripcion" [(ngModel)]="tareaAEditar.descripcion"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="importancia-text" class="col-form-label">Importancia:</label>
+                      <div></div>
+                      <input type="text" class="input-field" id="importancia-text" [(ngModel)]="tareaAEditar.importancia" name="descripcion">
+                    </div>
+                    <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
+                      <label for="selectProyecto" class="col-form-label">Proyecto:</label>
+                      <select class="form-select" aria-label="Default select example" [(ngModel)]="proyectoId" name="selectProyecto">
+                        <option *ngFor="let proyecto of proyectos" value={{proyecto.id}}>{{proyecto.nombre}}</option>
+                      </select>
+                    </div>
+                    <select class="select" multiple data-mdb-placeholder="Example placeholder" multiple [(ngModel)]="usuarioEmailSelect" name="select">
+                      <option *ngFor="let usuario of usuarios" value={{usuario.email}}>{{usuario.email}}</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  (click)="guardarProyecto(proyecto.id)">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-danger m-1" (click)="deleteTarea(tarea.id)">Eliminar</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
